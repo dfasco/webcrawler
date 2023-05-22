@@ -4,6 +4,14 @@ async function crawlPage(currentURL) {
   console.log(`Actively crawling: ${currentURL}`);
   try {
     const resp = await fetch(currentURL);
+
+    if (resp.status > 399) {
+      console.log(
+        `Error in fetch with status code ${resp.status} on ${currentURL}`
+      );
+      return;
+    }
+    
     console.log(await resp.text());
   } catch (err) {
     console.log(`Error in fetch: ${err.message}`);
