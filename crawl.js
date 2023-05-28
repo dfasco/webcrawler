@@ -25,7 +25,7 @@ async function crawlPage(baseURL, currentURL, pages) {
       console.log(
         `Error in fetch with status code ${resp.status} on ${currentURL}`
       );
-      return;
+      return pages;
     }
 
     const contentType = resp.headers.get("content-type");
@@ -34,13 +34,13 @@ async function crawlPage(baseURL, currentURL, pages) {
       console.log(
         `Non-HTML response, content type: ${contentType} on page: ${currentURL}`
       );
-      return;
+      return pages;
     }
 
     const htmlBody = await resp.text();
     const nextURLs = getURLsFromHTML(htmlBody, baseURL);
 
-    for (const nextURL of nextURLs) {
+    for (const nextcURL of nextURLs) {
       pages = await crawlPage(baseURL, nextURL, pages);
     }
   } catch (err) {
