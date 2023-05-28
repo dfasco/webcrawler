@@ -4,7 +4,7 @@ async function crawlPage(baseURL, currentURL, pages) {
   const baseURLObj = new URL(baseURL);
   const currentURLObj = new URL(currentURL);
 
-  if (baseURL.hostname !== currentURL.hostname) {
+  if (baseURLObj.hostname !== currentURLObj.hostname) {
     return pages;
   }
 
