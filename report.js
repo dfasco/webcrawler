@@ -1,0 +1,3 @@
+function sortPages(pages) {
+  return [];
+}
